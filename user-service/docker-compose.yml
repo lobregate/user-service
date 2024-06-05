@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  user-service:
+    image: user-service:0.0.1
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8091:8091"
+    networks:
+      - eureka-net
+
+networks:
+  eureka-net:
+    driver: bridge
