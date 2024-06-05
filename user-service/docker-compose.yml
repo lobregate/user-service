@@ -8,8 +8,8 @@ services:
     ports:
       - "8091:8091"
     networks:
-      - eureka-net
+      - local-network
 
 networks:
-  eureka-net:
-    driver: bridge
+  local-network:
+    external: true
