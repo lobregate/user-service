@@ -24,8 +24,3 @@ services:
       - 8082:80
     volumes:
       - ./data/pgadmin:/var/lib/pgadmin
-
-networks:
-  default:
-    name: local-network
-    external: true

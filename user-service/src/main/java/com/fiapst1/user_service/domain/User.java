@@ -1,10 +1,7 @@
 package com.fiapst1.user_service.domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -17,6 +14,7 @@ import lombok.*;
 public class User {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="ID")
     private Long id;
 
