@@ -34,7 +34,9 @@ public class JwtService {
                 .compact();
     }
 
-    private SecretKey getSecretKey() { return Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8)); }
+    private SecretKey getSecretKey() {
+        return Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+    }
 
     private Claims getClaims(String token) {
         SecretKey secretKey = getSecretKey();
@@ -45,6 +47,7 @@ public class JwtService {
                 .getBody();
     }
 
-    public String getUsername(String token) { return getClaims(token).getSubject(); }
-
+    public String getUsername(String token) {
+        return getClaims(token).getSubject();
+    }
 }

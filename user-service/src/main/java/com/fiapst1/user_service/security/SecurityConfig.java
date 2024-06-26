@@ -13,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
@@ -37,10 +36,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/user").permitAll()
-                .anyRequest()
-                .authenticated()
+                .authorizeHttpRequests()
+                .requestMatchers("/user/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -50,9 +48,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    public OncePerRequestFilter jwtFilter(){
+    public OncePerRequestFilter jwtFilter() {
         return new JwtAuthFilter(jwtService, userDetailsService);
     }
-
-
 }
